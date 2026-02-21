@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrei & Camila ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:system-ui,-apple-system,Segoe UI,Roboto;
+background:linear-gradient(135deg,#ff5f8a,#ff2f6d,#ff9ab5);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+color:#fff;
+text-align:center;
+overflow-x:hidden;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+header{
+padding:80px 16px 50px;
+animation:fadeIn 2s ease forwards;
+}
+
+h1{
+font-size:2.5rem;
+margin-bottom:10px;
+text-shadow:0 0 15px rgba(255,255,255,0.6);
+}
+
+.subtitle{
+font-style:italic;
+font-size:1.2rem;
+}
+
+.frase{
+margin-top:18px;
+font-size:1.1rem;
+line-height:1.7;
+}
+
+.promise{
+background:rgba(255,255,255,.2);
+margin:30px auto;
+padding:24px;
+border-radius:22px;
+max-width:90%;
+backdrop-filter:blur(10px);
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#fff;
+color:#ff2f6d;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+margin-top:20px;
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ffe6ee;
+}
+
+footer{
+padding:28px;
+font-size:.9rem;
+}
+
+.heart{
+position:fixed;
+width:16px;
+height:16px;
+background:#fff;
+transform:rotate(45deg);
+animation:float linear infinite;
+opacity:0.8;
+}
+
+.heart:before,.heart:after{
+content:"";
+position:absolute;
+width:16px;
+height:16px;
+background:#fff;
+border-radius:50%;
+}
+
+.heart:before{left:-8px}
+.heart:after{top:-8px}
+
+@keyframes float{
+0%{transform:translateY(0) rotate(45deg)}
+100%{transform:translateY(-120vh) rotate(45deg)}
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+/* CARTA */
+
+.envelope{
+width:260px;
+height:160px;
+background:#fff;
+margin:40px auto;
+position:relative;
+border-radius:8px;
+cursor:pointer;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+transition:0.5s;
+}
+
+.envelope:before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#ff5f8a,#ff2f6d);
+clip-path:polygon(0 0, 50% 60%, 100% 0);
+transition:0.5s;
+}
+
+.letter{
+position:absolute;
+top:10px;
+left:10px;
+right:10px;
+bottom:10px;
+background:#fff0f5;
+border-radius:8px;
+padding:20px;
+opacity:0;
+transform:translateY(20px);
+transition:0.5s;
+overflow:auto;
+color:#ff2f6d;
+font-size:0.9rem;
+}
+
+.envelope.open:before{
+transform:rotateX(180deg);
+}
+
+.envelope.open .letter{
+opacity:1;
+transform:translateY(0);
+}
+.gallery-section{
+padding:50px 20px;
+}
+
+.gallery-section h2{
+margin-bottom:30px;
+font-size:1.8rem;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:15px;
+max-width:900px;
+margin:auto;
+}
+
+.gallery img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:20px;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+.gallery img:hover{
+transform:scale(1.08);
+box-shadow:0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* Lightbox */
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+pointer-events:none;
+transition:0.4s;
+z-index:999;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:80%;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+
+.lightbox.active{
+opacity:1;
+pointer-events:auto;
+}
+/* MOBILE FIRST */
+
+.share-section{
+padding:40px 20px;
+margin-top:40px;
+}
+
+.share-section h2{
+font-size:1.6rem;
+margin-bottom:10px;
+}
+
+.share-section input{
+width:100%;
+max-width:300px;
+padding:10px;
+border-radius:12px;
+border:none;
+text-align:center;
+margin:10px auto;
+display:block;
+font-size:0.9rem;
+}
+
+#qrcode{
+margin-top:20px;
+display:flex;
+justify-content:center;
+}
+
+/* Melhor responsividade geral */
+
+@media(max-width:600px){
+h1{font-size:1.8rem;}
+.promise{margin:20px;}
+.gallery img{height:120px;}
+}
+.contador-section{
+padding:50px 20px;
+margin-top:40px;
+}
+
+.contador-section h2{
+font-size:1.6rem;
+margin-bottom:5px;
+}
+
+.data{
+opacity:0.9;
+margin-bottom:25px;
+}
+
+.contador{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.tempo{
+background:rgba(255,255,255,0.2);
+padding:15px;
+border-radius:18px;
+min-width:70px;
+backdrop-filter:blur(10px);
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.tempo span{
+display:block;
+font-size:1.4rem;
+font-weight:bold;
+}
+
+.tempo small{
+font-size:0.8rem;
+}
+
+</style>
+</head>
+<script>
+function atualizarContador(){
+  const dataInicio = new Date("2026-01-20T00:00:00");
+  const agora = new Date();
+
+  const diferenca = agora - dataInicio;
+
+  const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+  const segundos = Math.floor((diferenca / 1000) % 60);
+
+  document.getElementById("dias").innerText = dias;
+  document.getElementById("horas").innerText = horas;
+  document.getElementById("minutos").innerText = minutos;
+  document.getElementById("segundos").innerText = segundos;
+}
+
+setInterval(atualizarContador, 1000);
+atualizarContador();
+</script>
+<body>
+
+<header>
+<h1>Andrei & Camila ❤️</h1>
+<div class="subtitle">Você é a minha melhor escolha.</div>
+<div class="frase">
+A gente se amou antes mesmo do toque,<br>
+nossas almas estão vinculadas.
+</div>
+</header>
+
+<div class="promise">
+<h2>Promessa 💍</h2>
+<p>
+Prometo te escolher todos os dias,<br>
+cuidar do nosso amor nos detalhes,<br>
+nos silêncios e nos sonhos.<br>
+Você é o meu lugar seguro.
+</p>
+<button onclick="abrirCarta()">Abrir minha cartinha 💌</button>
+</div>
+
+<!-- CARTA -->
+<div class="envelope" id="carta" onclick="abrirCarta()">
+<div class="letter">
+Meu amor,
+
+Se eu pudesse escolher mil vezes,
+mil vezes escolheria você.
+
+Você trouxe luz para os meus dias,
+calma para os meus medos,
+e sentido para os meus sonhos.
+
+Eu prometo ser abrigo,
+ser abraço,
+ser casa.
+
+Com você, tudo é mais bonito.
+Você é o amor da minha vida. ❤️
+</div>
+</div>
+<section class="gallery-section">
+<h2>Nossos Momentos 📸💖</h2>
+
+<div class="gallery">
+  <img src="c:\Users\andre\Downloads\WhatsApp Image 2026-02-21 at 10.00.13.jpeg" onclick="abrirImagem(this.src)">
+  <img src="c:\Users\andre\Downloads\WhatsApp Image 2026-02-21 at 10.00.16.jpeg" onclick="abrirImagem(this.src)">
+  <img src="c:\Users\andre\Downloads\WhatsApp Image 2026-02-21 at 10.00.17.jpeg" onclick="abrirImagem(this.src)">
+  <img src="c:\Users\andre\Downloads\WhatsApp Image 2026-02-21 at 10.16.16.jpeg" onclick="abrirImagem(this.src)">
+  <img src="c:\Users\andre\Downloads\WhatsApp Image 2026-02-21 at 10.20.19.jpeg" onclick="abrirImagem(this.src)">
+  <img src="c:\Users\andre\Downloads\WhatsApp Image 2026-02-21 at 10.20.20.jpeg" onclick="abrirImagem(this.src)">
+ 
+</div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="fecharImagem()">
+  <img id="imgAmpliada">
+</div>
+<section class="share-section">
+  <h2>Para você, meu amor 💌</h2>
+  <p>Se quiser guardar esse momento para sempre:</p>
+
+  <input type="text" id="siteLink" 
+         value="https://Eu&Camila.com" readonly>
+
+  <button onclick="copiarLink()">Copiar Link 💕</button>
+
+  <div id="qrcode"></div>
+</section>
+<section class="contador-section">
+  <h2>Desde que nos conhecemos ❤️</h2>
+  <p class="data">20 de Janeiro de 2026</p>
+
+  <div class="contador">
+    <div class="tempo">
+      <span id="dias">0</span>
+      <small>Dias</small>
+    </div>
+    <div class="tempo">
+      <span id="horas">0</span>
+      <small>Horas</small>
+    </div>
+    <div class="tempo">
+      <span id="minutos">0</span>
+      <small>Min</small>
+    </div>
+    <div class="tempo">
+      <span id="segundos">0</span>
+      <small>Seg</small>
+    </div>
+  </div>
+</section>
+
+<footer>
+Feito com amor por Andrei, para Camila 💖
+</footer>
+
+<script>
+function abrirCarta(){
+document.getElementById("carta").classList.toggle("open");
+}
+
+setInterval(()=>{
+const h=document.createElement("div");
+h.className="heart";
+h.style.left=Math.random()*100+"vw";
+h.style.bottom="-20px";
+h.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),7000);
+},300);
+
+function abrirImagem(src){
+const lightbox = document.getElementById("lightbox");
+const img = document.getElementById("imgAmpliada");
+img.src = src;
+lightbox.classList.add("active");
+}
+
+function fecharImagem(){
+document.getElementById("lightbox").classList.remove("active");
+}
+
+</script>
+
+</body>
+</html>
